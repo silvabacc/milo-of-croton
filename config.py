@@ -1,9 +1,10 @@
-from dotenv import dotenv_values
+from dotenv import load_dotenv
+load_dotenv()
 
-config = dotenv_values(".env")
+import os
 
-DISCORD_TOKEN = config["DISCORD_TOKEN"]
-SUPABASE_URL = config["SUPABASE_URL"]
-SUPABASE_KEY = config["SUPABASE_KEY"]
-SUPABASE_USER = config["SUPABASE_USER"]
-SUPABASE_USER_PASS = config["SUPABASE_USER_PASS"]
+DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+SUPABASE_USER = os.environ.get("SUPABASE_USER")
+SUPABASE_USER_PASS = os.environ.get("SUPABASE_USER_PASS")

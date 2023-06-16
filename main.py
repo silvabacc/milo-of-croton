@@ -41,5 +41,6 @@ async def send_quote():
 
   for channel in channels:
     await channel.send(embed=quote_embed(author=quote["author"], quote=quote["text"], id=quote["id"]))
-
+    
+print(DISCORD_TOKEN)
 client.run(DISCORD_TOKEN)
