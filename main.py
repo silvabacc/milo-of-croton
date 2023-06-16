@@ -1,7 +1,7 @@
 import discord
 from discord.ext import tasks
 from discord import app_commands
-from config import DISCORD_TOKEN
+from config import DISCORD_TOKEN, LOOP_HOURS
 from add_quote_modal import AddQuoteModal
 from service import getQuote
 from embeds import quote_embed
@@ -29,7 +29,7 @@ async def add_quote(interaction):
 async def delete_quote(interaction):
   await interaction.response.send_message("deleting...")
 
-@tasks.loop(hours=1)  
+@tasks.loop(hours=int(LOOP_HOURS))  
 async def send_quote():
   quote = getQuote()
 
