@@ -12,7 +12,7 @@ def getPostgresClient():
     
 def getQuote():
   pg_client = getPostgresClient()
-  db_result = pg_client.table("quotes").select('*').execute()
+  db_result = pg_client.table("quotes").select('*').eq("author", "Marcus Aurelius").execute()
   random.shuffle(db_result.data)
   random_quotes = db_result.data
   return random_quotes[0]
