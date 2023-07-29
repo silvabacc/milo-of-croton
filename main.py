@@ -37,9 +37,11 @@ async def send_quote():
   channels = []
 
   for guild in guilds:
-    channels.append(guild.text_channels[0])
+    channel = next((channel for channel in guild.text_channels if channel.name == 'stoic-quotes'), None)
+    channels.append(channel)
 
   for channel in channels:
-    await channel.send(embed=quote_embed(author=quote["author"], quote=quote["text"], id=quote["id"]))
+    if(channel != None):
+      await channel.send(embed=quote_embed(author=quote["author"], quote=quote["text"], id=quote["id"]))
     
 client.run(DISCORD_TOKEN)
